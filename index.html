@@ -1,0 +1,73 @@
+<html lang="EN">
+<head>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <script src="js/views/navigationbarView.js" type="text/jsx"></script>
+    <script src="js/views/createAccountView.js" type="text/jsx"></script>
+    <script src="js/views/loginView.js" type="text/jsx"></script>
+    <script src="js/views/homeView.js" type="text/jsx"></script>
+    <script src="js/views/instructionsView.js" type="text/jsx"></script>
+    <script src="js/views/settingsView.js" type="text/jsx"></script>
+    <script src="js/views/mainGameView.js" type="text/jsx"></script>
+    <script src="js/views/pauseView.js" type="text/jsx"></script>
+    <script src="js/views/setupView.js" type="text/jsx"></script>
+    <script src="js/views/lifelineView.js" type="text/jsx"></script>
+    <script src="js/views/lifelineDefinitionResultView.js" type="text/jsx"></script>
+    <script src="js/views/roundSummaryView.js" type="text/jsx"></script>
+    <script src="js/views/endGameView.js" type="text/jsx"></script>
+    <script src="js/views/helpView.js" type="text/jsx"></script>
+
+    <script src="js/app.js" type="text/jsx"></script>
+    <script src="js/GameModel.js"></script>
+    <script src="js/views/promiseNoData.js" type="text/jsx"></script>
+    <script src="js/apiConfig.js"></script>
+    <script src="js/gameSource.js"></script>
+
+    <script src="reactjs/showPresenter.js" type="text/jsx"></script>
+    <script src="reactjs/createAccountPresenter.js" type="text/jsx"></script>
+    <script src="reactjs/navigationbarPresenter.js" type="text/jsx"></script>
+    <script src="reactjs/loginPresenter.js" type="text/jsx"></script>
+    <script src="reactjs/homePresenter.js" type="text/jsx"></script>
+    <script src="reactjs/settingsPresenter.js" type="text/jsx"></script>
+    <script src="reactjs/instructionsPresenter.js" type="text/jsx"></script>
+    <script src="reactjs/pauseViewPresenter.js" type="text/jsx"></script>
+    <script src="reactjs/mainGamePresenter.js" type="text/jsx"></script>
+    <script src="reactjs/setupPresenter.js" type="text/jsx"></script>
+    <script src="reactjs/lifelinePresenter.js" type="text/jsx"></script>
+    <script src="reactjs/roundSummaryPresenter.js" type="text/jsx"></script>
+    <script src="reactjs/endGamePresenter.js" type="text/jsx"></script>
+    <script src="reactjs/helpPresenter.js" type="text/jsx"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+    <script src="js/firebaseConfig.js"></script>
+
+    <script src="js/firebaseModel.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>In other words</title>
+</head>
+
+<body>
+    <noscript>Please enable Javascript to run this app.</noscript>
+    <div id="app"></div>
+</body>
+
+<script type="text/jsx">
+    const myModel = new GameModel();
+    persistModel(myModel);
+
+    // Måste referera till användaren som inte laddads in vid det här laget...
+    firebase.database().ref("gameModel").once("value").then(() =>
+        ReactDOM.render(<App model = { myModel } />, document.getElementById("app"))
+    );
+    
+    //ReactDOM.render(<App model = { myModel } />, document.getElementById("app"));
+</script>
+
+</html>
